@@ -9,7 +9,7 @@ class StopwatchListOrchestrator(
     private val scope: CoroutineScope
 ) {
     private var job: Job? = null
-    private val mutableTicker = MutableStateFlow("")
+    private val mutableTicker = MutableStateFlow(TimestampMillisecondsFormatter.DEFAULT_TIME)
     val ticker: StateFlow<String> = mutableTicker
 
     fun start() {
@@ -38,7 +38,7 @@ class StopwatchListOrchestrator(
     }
 
     private fun clearValue() {
-        mutableTicker.value = ""
+        mutableTicker.value = TimestampMillisecondsFormatter.DEFAULT_TIME
     }
 
     private fun stopJob() {

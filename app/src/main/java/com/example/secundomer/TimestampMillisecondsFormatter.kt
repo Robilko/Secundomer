@@ -10,7 +10,7 @@ class TimestampMillisecondsFormatter {
         val minutesFormatted = (minutes % 60).pad(2)
         val hours = minutes / 60
         return if (hours > 0) {
-            val hoursFormatted = (minutes % 60).pad(2)
+            val hoursFormatted = (minutes / 60).pad(2)
             "$hoursFormatted:$minutesFormatted:$secondsFormatted"
         } else {
             "$minutesFormatted:$secondsFormatted:$millisecondsFormatted"
