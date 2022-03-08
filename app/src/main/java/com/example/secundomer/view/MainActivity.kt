@@ -1,9 +1,12 @@
-package com.example.secundomer
+package com.example.secundomer.view
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.secundomer.*
+import com.example.secundomer.model.time.*
+import com.example.secundomer.viewmodel.StopwatchListOrchestrator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

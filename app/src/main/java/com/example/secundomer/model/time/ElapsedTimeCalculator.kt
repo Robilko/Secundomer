@@ -1,4 +1,4 @@
-package com.example.secundomer
+package com.example.secundomer.model.time
 
 class ElapsedTimeCalculator(private val timestampProvider: TimestampProvider) {
 
