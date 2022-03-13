@@ -6,7 +6,7 @@ import com.example.secundomer.model.Stopwatch
 import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel(
-    private val stopwatch: Stopwatch = StopwatchModule().getStopwatch()
+    private val stopwatch: Stopwatch
 ) : ViewModel() {
 
     val ticker: StateFlow<String> = stopwatch.ticker

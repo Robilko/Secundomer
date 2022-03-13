@@ -1,21 +1,26 @@
 package com.example.secundomer.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.secundomer.databinding.ActivityMainBinding
+import com.example.secundomer.di.StopwatchModule
+import com.example.secundomer.viewmodel.MainVieModelFactory
 import com.example.secundomer.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    /** Ленивая инициализация viewmodel с использованием ViewModelProvider и фабрики, для того чтобы наша вьюмодель жила пока наша активити не закроется окончательно */
     private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
+        ViewModelProvider(
+            this,
+            MainVieModelFactory(StopwatchModule().getStopwatch())
+        )[MainViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,15 +43,12 @@ class MainActivity : AppCompatActivity() {
     private fun setListeners() {
         with(binding) {
             buttonStart.setOnClickListener {
-                Log.d("TAG", "start clicked")
                 viewModel.onStartClicked()
             }
             buttonPause.setOnClickListener {
-                Log.d("TAG", "pause clicked")
                 viewModel.onPauseClicked()
             }
             buttonStop.setOnClickListener {
-                Log.d("TAG", "stop clicked")
                 viewModel.onStopClicked()
             }
         }
