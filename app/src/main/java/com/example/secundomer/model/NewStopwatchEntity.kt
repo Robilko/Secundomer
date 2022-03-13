@@ -1,7 +1,5 @@
-package com.example.secundomer.di
+package com.example.secundomer.model
 
-import com.example.secundomer.model.Stopwatch
-import com.example.secundomer.model.StopwatchImpl
 import com.example.secundomer.model.calculate.ElapsedTimeCalculator
 import com.example.secundomer.model.calculate.StopwatchStateCalculator
 import com.example.secundomer.model.time.StopwatchStateHolder
@@ -11,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
-class StopwatchModule {
+class NewStopwatchEntity {
 
     private val timestampProvider by lazy {
         object : TimestampProvider {
@@ -21,7 +19,7 @@ class StopwatchModule {
         }
     }
 
-    fun getStopwatch(): Stopwatch = StopwatchImpl(
+    fun getNewStopwatch(): StopwatchModel = StopwatchModelImpl(
         StopwatchStateHolder(
             StopwatchStateCalculator(
                 timestampProvider,

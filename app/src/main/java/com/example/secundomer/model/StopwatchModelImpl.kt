@@ -24,10 +24,10 @@ cancelChildren() останавливает работу, но сохраняе�
 корутины. Это нужно как раз на тот случай, если пользователь нажал не Стоп, а Пауза на
 секундомере.
  */
-class StopwatchImpl(
+class StopwatchModelImpl(
     private val stopwatchStateHolder: StopwatchStateHolder,
     private val scope: CoroutineScope
-) : Stopwatch{
+) : StopwatchModel{
 
     private var job: Job? = null
     private val mutableTicker = MutableStateFlow(DEFAULT_TIME)

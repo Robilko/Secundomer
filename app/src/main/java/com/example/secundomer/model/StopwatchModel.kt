@@ -3,7 +3,7 @@ package com.example.secundomer.model
 
 import kotlinx.coroutines.flow.StateFlow
 
-interface Stopwatch {
+interface StopwatchModel {
 
     val ticker: StateFlow<String>
 

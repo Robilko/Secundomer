@@ -1,25 +1,38 @@
 package com.example.secundomer.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.secundomer.di.StopwatchModule
-import com.example.secundomer.model.Stopwatch
+import com.example.secundomer.model.NewStopwatchEntity
+import com.example.secundomer.model.StopwatchModel
 import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel(
-    private val stopwatch: Stopwatch
+    private val stopwatchModelFirst: StopwatchModel = NewStopwatchEntity().getNewStopwatch(),
+    private val stopwatchModelSecond: StopwatchModel = NewStopwatchEntity().getNewStopwatch()
 ) : ViewModel() {
 
-    val ticker: StateFlow<String> = stopwatch.ticker
+    val tickerFirst: StateFlow<String> = stopwatchModelFirst.ticker
+    val tickerSecond: StateFlow<String> = stopwatchModelSecond.ticker
 
-    fun onStartClicked() {
-        stopwatch.start()
+    fun onStartClickedFirst() {
+        stopwatchModelFirst.start()
     }
 
-    fun onPauseClicked() {
-        stopwatch.pause()
+    fun onPauseClickedFirst() {
+        stopwatchModelFirst.pause()
     }
 
-    fun onStopClicked() {
-        stopwatch.stop()
+    fun onStopClickedFirst() {
+        stopwatchModelFirst.stop()
+    }
+
+    fun onStartClickedSecond() {
+        stopwatchModelSecond.start()
+    }
+
+    fun onPauseClickedSecond() {
+        stopwatchModelSecond.pause()
+    }
+    fun onStopClickedSecond() {
+        stopwatchModelSecond.stop()
     }
 }
