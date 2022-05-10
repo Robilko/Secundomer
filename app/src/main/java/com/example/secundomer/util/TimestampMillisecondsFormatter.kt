@@ -5,7 +5,7 @@ package com.example.secundomer.util
 секундомере меньше часа, то мы отображаем минуты, секунды и миллисекунды. Если больше —
 отображаем часы, минуты и секунды. */
 class TimestampMillisecondsFormatter {
-
+    // Стандартный метод подходит для проверки тестов на Equals и NotEquals
     fun format(timestamp: Long): String {
         val millisecondsFormatted = (timestamp % 1000).pad(3)
         val seconds = timestamp / 1000
@@ -21,6 +21,7 @@ class TimestampMillisecondsFormatter {
         }
     }
 
+
     /**
      * Функция-расширение Long.pad, которую мы написали сами. Благодаря этому
     простому и изящному решению мы просто отображаем нужное
@@ -32,4 +33,23 @@ class TimestampMillisecondsFormatter {
     padChar - символ, которым дополняется строка, если ее длина меньше указанной длины.
      */
     private fun Long.pad(desiredLength: Int) = this.toString().padStart(desiredLength, '0')
+
+    /** Новые методы для тестирования к заданию 3 в ДЗ урока 1*/
+    // Метод для проверки на ArrayEquals
+    fun format(hours: Long, minutes: Long, seconds: Long): Array<String> {
+        return arrayOf("$hours", "$minutes", "$seconds")
+    }
+
+        // Метод для проверки на Null и на NotNull
+    fun format(timeFormat: Long?): String? {
+        return if (timeFormat == null) {
+            null
+        } else {
+            format(timeFormat)
+        }
+    }
+    // Метод для проверки на assertSame
+    fun format(): String {
+        return "00:00:000"
+    }
 }
